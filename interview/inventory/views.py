@@ -219,3 +219,20 @@ class InventoryTypeRetrieveUpdateDestroyView(APIView):
     
     def get_queryset(self, **kwargs):
         return self.queryset.get(**kwargs)
+
+class InventoryItemsCreatedCertainDay(APIView):
+    queryset = Inventory.objects.all()
+    serializer_class = InventoryTypeSerializer
+
+    def get(self, request: Request, *args, **kwargs) -> Response:
+        inventory = queryset.filter(year__gte=kwargs['date'])
+        serializer = self.serializer_class(inventory)
+        return Response(serializer.data, status=200)
+
+
+
+
+
+
+
+
