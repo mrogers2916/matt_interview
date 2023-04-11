@@ -14,4 +14,7 @@ urlpatterns = [
     path('types/', InventoryTypeListCreateView.as_view(), name='inventory-types-list'),
     path('', InventoryListCreateView.as_view(), name='inventory-list'),
     path('createdAfter/<str:date>/', InventoryItemsCreatedCertainDay.as_view(), name='inventory-date-created-list'),
+    path('deactivate/<int:id>/', DeactivateOrderView.as_view(), name='inventory-deactivate'),
+    path('deactivate/<str:date1>/<str:date2>/', InventoryItemsDateRange.as_view(), name='inventory-date-range'),
+    
 ]

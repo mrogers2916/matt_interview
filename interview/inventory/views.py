@@ -244,4 +244,12 @@ class DeactivateOrderView(APIView):
         
         return Response(serializer.data, status=201)
 
+class InventoryItemsDateRange(APIView):
+    queryset = Inventory.objects.all()
+    serializer_class = InventorySerializer
+
+    def get(self, request: Request, *args, **kwargs) -> Response:
+        inventory = self.get_queryset.filter(year__gte=kwargs['date'])
+        serializer = self.serializer_class(inventory)
+        return Response(serializer.data, status=200)
 
